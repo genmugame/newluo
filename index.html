@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALLfiring - Pre-registration Open Now!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0d0a15;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ─── Screen 1: Hero KV ─── */
+    .screen-hero {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+
+    /* Desktop KV — natural width/height, no cropping */
+    .hero-bg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Mobile long image is hidden on desktop */
+    .hero-mobile {
+      display: none;
+    }
+
+    /* Social icons — top left */
+    .social-icons {
+      position: absolute;
+      top: 36px;
+      left: 44px;
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      z-index: 10;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .social-icons a:hover {
+      background: rgba(255, 255, 255, 0.26);
+      transform: scale(1.1);
+    }
+
+    .social-icons a img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    /* Download buttons — centered below tagline in KV */
+    .download-buttons {
+      position: absolute;
+      left: 65%;
+      transform: translateX(-50%);
+      top: 72%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      z-index: 10;
+    }
+
+    .btn-store {
+      display: block;
+      transition: transform 0.2s, filter 0.2s;
+    }
+
+    .btn-store:hover {
+      transform: translateY(-2px) scale(1.04);
+      filter: brightness(1.08);
+    }
+
+    .btn-store img {
+      height: 81px;
+      width: auto;
+      display: block;
+    }
+
+    /* ─── Screen 2: Pre-registration Rewards ─── */
+    .screen-rewards {
+      width: 100%;
+      display: block;
+      line-height: 0;
+    }
+
+    .screen-rewards img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: #100c1c;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 28px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .footer-brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .footer-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-game-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f0eaff;
+      letter-spacing: 2px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .footer-game-desc {
+      font-size: 12px;
+      color: #7a6e96;
+      letter-spacing: 0.4px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .footer-links a {
+      color: #9b90b8;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #e0d8f5;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .social-icons {
+        top: 20px;
+        left: 20px;
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      .social-icons a {
+        width: 38px;
+        height: 38px;
+      }
+
+      .social-icons a img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .download-buttons {
+        right: 4%;
+        top: 60%;
+        gap: 10px;
+      }
+
+      .btn-store img {
+        height: 44px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      /* Switch to mobile long image */
+      .screen-hero {
+        height: auto;
+        min-height: unset;
+      }
+
+      .hero-bg {
+        position: relative;
+        inset: unset;
+        width: 100%;
+        height: auto;
+        object-fit: unset;
+      }
+
+      /* Hide desktop KV, show mobile long */
+      .hero-desktop { display: none; }
+      .hero-mobile  { display: block; }
+
+      /* Hide separate rewards section on mobile (already in mobile_long.jpg) */
+      .screen-rewards { display: none; }
+
+      /* Buttons: centered, overlaid on the hero portion (~38% from top of mobile image) */
+      .download-buttons {
+        position: absolute;
+        left: 50%;
+        right: unset;
+        top: 38%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-store img {
+        height: 40px;
+      }
+
+      /* Social icons */
+      .social-icons {
+        top: 16px;
+        left: 16px;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      .social-icons a {
+        width: 34px;
+        height: 34px;
+      }
+
+      .social-icons a img {
+        width: 18px;
+        height: 18px;
+      }
+
+      footer {
+        padding: 20px 20px;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .footer-brand span {
+        font-size: 18px;
+      }
+
+      .footer-links {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Screen 1: Hero KV ─── -->
+  <section class="screen-hero">
+    <img class="hero-bg hero-desktop" src="kv_pc.jpg" alt="AllRing Pre-registration">
+    <img class="hero-bg hero-mobile" src="mobile_long.jpg" alt="AllRing Pre-registration">
+
+    <!-- Community icons — top left -->
+    <div class="social-icons">
+      <a href="https://discord.gg/Bps5JRkSgQ" target="_blank" rel="noopener" aria-label="Discord">
+        <img src="icon_discord.png" alt="Discord">
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61585042701755" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="icon_facebook.png" alt="Facebook">
+      </a>
+      <a href="https://x.com/ALLfiring2026" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <img src="icon_x.png" alt="X">
+      </a>
+    </div>
+
+    <!-- Pre-registration buttons — right side below tagline -->
+    <div class="download-buttons">
+      <a class="btn-store" href="https://apps.apple.com/app/allfiring/id6759645105" target="_blank" rel="noopener" aria-label="Pre-register on App Store">
+        <img src="btn_apple.svg" alt="App Store">
+      </a>
+      <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.genmugame.prometheus" target="_blank" rel="noopener" aria-label="Pre-register on Google Play">
+        <img src="btn_google.png" alt="Google Play">
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Screen 2: Pre-registration Rewards ─── -->
+  <section class="screen-rewards">
+    <img src="reward.png" alt="Pre-Registration Rewards">
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <div class="footer-brand">
+      <img src="game_icon.png" alt="ALLfiring icon">
+      <div class="footer-brand-text">
+        <span class="footer-game-name">ALLfiring</span>
+        <span class="footer-game-desc">Anime Voxel Side-Scrolling Action RPG</span>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="terms.html" target="_blank" rel="noopener">User Agreement</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
